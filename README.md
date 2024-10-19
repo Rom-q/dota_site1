@@ -1,7 +1,5 @@
 database dota-test--
 
-program can
+program can:
+-
 -calculate the win rate
--
--
--
