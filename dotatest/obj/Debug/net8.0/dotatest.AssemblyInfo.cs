@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("dotatest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5f0cbd81ac85e8ca40481f319227cda8e7ed4c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("dotatest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("dotatest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

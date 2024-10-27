@@ -42,3 +42,4 @@ d:\da\dotatest\dotatest\bin\Debug\net8.0\ExcelNumberFormat.dll
 d:\da\dotatest\dotatest\bin\Debug\net8.0\RBush.dll
 d:\da\dotatest\dotatest\bin\Debug\net8.0\SixLabors.Fonts.dll
 d:\da\dotatest\dotatest\bin\Debug\net8.0\System.IO.Packaging.dll
+d:\da\dotatest\dotatest\obj\Debug\net8.0\dotatest.sourcelink.json
