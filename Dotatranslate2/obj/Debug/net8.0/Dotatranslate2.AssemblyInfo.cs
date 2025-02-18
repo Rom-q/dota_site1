@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dotatranslate2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db41c4e9696663cdc79d18b797b0f804857e94d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fec3acd16735d8f1ffe0bf33d9d4d2fea64a8a61")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dotatranslate2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dotatranslate2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

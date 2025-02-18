@@ -5208,7 +5208,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\golma\\.nuget\\packages\\": {}
+    "C:\\Users\\golma\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -5219,8 +5220,12 @@
       "packagesPath": "C:\\Users\\golma\\.nuget\\packages\\",
       "outputPath": "D:\\da\\dotatest\\dotatest\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\golma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5245,7 +5250,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -5288,7 +5294,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -5297,7 +5303,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "У пакета \"RestSharp\" 106.11.7 есть известная уязвимость https://github.com/advisories/GHSA-9pq7-rcxv-47vq (уровень серьезности: высокий уровень)",
+      "message": "Package 'RestSharp' 106.11.7 has a known high severity vulnerability, https://github.com/advisories/GHSA-9pq7-rcxv-47vq",
       "libraryId": "RestSharp",
       "targetGraphs": [
         "net8.0"
