@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cRdyT2g1t3g=",
+  "dgSpecHash": "cqFkLj0Ywis=",
   "success": true,
-  "projectFilePath": "D:\\da\\dotatest\\dotatest\\dotatest.csproj",
+  "projectFilePath": "E:\\da\\d2pt(govna)\\dotatest\\dotatest\\dotatest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\golma\\.nuget\\packages\\closedxml\\0.104.1\\closedxml.0.104.1.nupkg.sha512",
     "C:\\Users\\golma\\.nuget\\packages\\closedxml.parser\\1.2.0\\closedxml.parser.1.2.0.nupkg.sha512",
@@ -95,14 +95,18 @@
     "C:\\Users\\golma\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\golma\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\golma\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
-    "C:\\Users\\golma\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\golma\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\golma\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.14\\microsoft.netcore.app.ref.8.0.14.nupkg.sha512",
+    "C:\\Users\\golma\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.14\\microsoft.windowsdesktop.app.ref.8.0.14.nupkg.sha512",
+    "C:\\Users\\golma\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.14\\microsoft.aspnetcore.app.ref.8.0.14.nupkg.sha512",
+    "C:\\Users\\golma\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.14\\microsoft.netcore.app.host.win-x64.8.0.14.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "У пакета \"RestSharp\" 106.11.7 есть известная уязвимость https://github.com/advisories/GHSA-9pq7-rcxv-47vq (уровень серьезности: высокий уровень)",
+      "message": "Package 'RestSharp' 106.11.7 has a known high severity vulnerability, https://github.com/advisories/GHSA-9pq7-rcxv-47vq",
       "libraryId": "RestSharp",
       "targetGraphs": [
         "net8.0"
