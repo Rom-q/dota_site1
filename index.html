@@ -1,28 +1,269 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dotatest</title>
     <style>
-        body {
-            background-color: black;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+        :root {
+            --bg-color: #1a1a1a;
+            --card-color: #2d2d2d;
+            --text-color: #e0e0e0;
+            --primary-color: #ff5722;
+            --secondary-color: #7b1fa2;
+            --border-color: #444;
         }
-        img {
-            margin-top: 20px;
-            max-width: 80%;
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .search-container {
+            background-color: var(--card-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+        
+        input, button {
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+        }
+        
+        input {
+            width: 70%;
+            background-color: #3d3d3d;
+            color: var(--text-color);
+            border-radius: 4px 0 0 4px;
+        }
+        
+        button {
+            width: 28%;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #e64a19;
+        }
+        
+        .result-container {
+            background-color: var(--card-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            display: none;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 25px;
+            border: 3px solid var(--primary-color);
+        }
+        
+        
+        .profile-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+        }
+        
+        .profile-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .detail-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: #3d3d3d;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .detail-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+        
+        .loader {
+            border: 5px solid #3d3d3d;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        .error {
+            color: #f44336;
+            text-align: center;
+            padding: 20px;
+            display: none;
+            background-color: #3d3d3d;
+            border-radius: 6px;
+            border: 1px solid #f44336;
+        }
+        
+        .matches-container {
+            margin-top: 30px;
+        }
+        
+        .matches-title {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .match-card {
+            background-color: #3d3d3d;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .match-result {
+            font-weight: bold;
+            font-size: 18px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .win {
+            color: #4caf50;
+        }
+        
+        .loss {
+            color: #f44336;
+        }
+        
+        .match-hero {
+            display: flex;
+            align-items: center;
+            width: 200px;
+            margin-right: 20px;
+        }
+        
+        .hero-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .match-stats {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .stat-item {
+            min-width: 120px;
+        }
+        
+        .stat-value {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <h1>Страница в разработке приходите позже</h1>
-    <img src="files/смешная картинка.png" alt="Image">
+    <h1>dotatest--</h1>
+    
+    <div class="search-container">
+        <input type="text" id="steamIdInput" placeholder="Enter Steam ID (e.g. 123456789)">
+        <button id="searchButton">Search</button>
+    </div>
+    
+    <div class="loader" id="loader"></div>
+    <div class="error" id="error"></div>
+    
+    <div class="result-container" id="resultContainer">
+        <div class="profile-header">
+            <img id="avatar" class="avatar" src="" alt="Profile Avatar">
+            <div>
+                <h2 id="profileName" class="profile-name">Loading...</h2>
+                <p id="profileId">Steam ID: </p>
+                <p id="firstMatch">First match: </p>
+        
+        <div class="profile-details">
+            <div class="detail-card">
+                <h3>Basic Info</h3>
+                <p><strong>Last match:</strong> <span id="lastmatch">-</span></p>
+                <p><strong>Country:</strong> <span id="country">-</span></p>
+            </div>
+            
+            <div class="detail-card">
+                <h3>Dota 2 Stats</h3>
+                <p><strong>Total Games:</strong> <span id="totalGames">-</span></p>
+                <p><strong>Wins:</strong> <span id="wins">-</span></p>
+                <p><strong>Losses:</strong> <span id="losses">-</span></p>
+                <p><strong>Win Rate:</strong> <span id="winRate">-</span></p>
+            </div>
+            
+            <div class="detail-card">
+                <h3>Hero Stats</h3>
+                <p><strong>Most Played Hero:</strong> <span id="mostPlayedHero">-</span></p>
+                <p><strong>Games:</strong> <span id="mostHeroGames">-</span></p>
+                <p><strong>Win Rate:</strong> <span id="mostHeroWinrate">-</span></p>
+            </div>
+        </div>
+        
+        <div class="matches-container">
+            <h3 class="matches-title">Last 10 Matches</h3>
+            <div id="matchesList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,1 @@
+here are all portraits of dota 2 heroes named by opendota IDs on 18.04.25

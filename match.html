@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dotatest</title>
-    <script src="script.js" defer></script>
     <style>
     body{
         background-color: black;
         color: white;
     }  
     </style>
+    <script>
+        function setID() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const idValue = urlParams.get('id'); 
+            if (idValue) {
+                document.getElementById('idInput').value = idValue; 
+            }
+        }
+    </script>
+    <script src="script1.js" defer></script>
 </head>
-<body>
-    <input type="text" id="myInput" placeholder="match id">
-    <button id="myButton">Получить значение</button>
-    <p id="id"></p>
+<body onload="setID()">
+    <input type="text" id="idInput" placeholder="match id">
+    <button id="idButton">Получить значение</button>
+    <p id="idp"></p>
 </body>
 </html>
