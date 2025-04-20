@@ -1,29 +1,337 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dotatest</title>
+    <title>Dota Match Info</title>
     <style>
-    body{
-        background-color: black;
-        color: white;
-    }  
+        :root {
+            --bg-color: #1a1a1a;
+            --card-color: #2d2d2d;
+            --text-color: #e0e0e0;
+            --primary-color: #ff5722;
+            --secondary-color: #7b1fa2;
+            --border-color: #444;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .search-container {
+            background-color: var(--card-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+        
+        input, button {
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+        }
+        
+        input {
+            width: 70%;
+            background-color: #3d3d3d;
+            color: var(--text-color);
+            border-radius: 4px 0 0 4px;
+        }
+        
+        button {
+            width: 28%;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #e64a19;
+        }
+        
+        .result-container {
+            background-color: var(--card-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            display: none;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        
+        .match-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .match-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+        }
+        
+        .match-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .detail-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: #3d3d3d;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .detail-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+        
+        .loader {
+            border: 5px solid #3d3d3d;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        .error {
+            color: #f44336;
+            text-align: center;
+            padding: 20px;
+            display: none;
+            background-color: #3d3d3d;
+            border-radius: 6px;
+            border: 1px solid #f44336;
+        }
+        
+        .teams-container {
+            margin-top: 30px;
+        }
+        
+        .teams-title {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .team-card {
+            background-color: #3d3d3d;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .team-header {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .radiant {
+            color: #4caf50;
+        }
+        
+        .dire {
+            color: #f44336;
+        }
+        
+        .player-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .player-row:last-child {
+            border-bottom: none;
+        }
+        
+        .hero-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .player-info {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .player-name {
+            min-width: 200px;
+        }
+        
+        .stat-item {
+            min-width: 100px;
+        }
+        
+        .stat-value {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .match-result {
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: var(--card-color);
+        }
+        
+        .win {
+            background-color: rgba(76, 175, 80, 0.2);
+        }
+        
+        .loss {
+            background-color: rgba(244, 67, 54, 0.2);
+        }
+        
+        .json-viewer {
+            background-color: #3d3d3d;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 500px;
+            overflow-y: auto;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .toggle-json {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .toggle-json:hover {
+            background-color: #6a1b9a;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
     <script>
         function setID() {
             const urlParams = new URLSearchParams(window.location.search);
             const idValue = urlParams.get('id'); 
             if (idValue) {
-                document.getElementById('idInput').value = idValue; 
+                document.getElementById('matchIdInput').value = idValue; 
             }
         }
     </script>
     <script src="script1.js" defer></script>
 </head>
 <body onload="setID()">
-    <input type="text" id="idInput" placeholder="match id">
-    <button id="idButton">Получить значение</button>
-    <p id="idp"></p>
-</body>
-</html>
+    <h1>Dota Match Information</h1>
+    
+    <div class="search-container">
+        <input type="text" id="matchIdInput" placeholder="Enter Match ID (e.g. 123456789)">
+        <button id="searchButton">Search</button>
+    </div>
+    
+    <div class="loader" id="loader"></div>
+    <div class="error" id="error"></div>
+    
+    <div class="result-container" id="resultContainer">
+        <div class="match-header">
+            <div>
+                <h2 id="matchId" class="match-title">Match ID: </h2>
+                <p id="matchDuration">Duration: </p>
+                <p id="matchDate">Date: </p>
+            </div>
+        </div>
+        
+        <div class="match-details">
+            <div class="detail-card">
+                <h3>Match Info</h3>
+                <p><strong>Game Mode:</strong> <span id="gameMode">-</span></p>
+                <p><strong>Lobby Type:</strong> <span id="lobbyType">-</span></p>
+                <p><strong>Region:</strong> <span id="region">-</span></p>
+            </div>
+            
+            <div class="detail-card">
+                <h3>Radiant Team</h3>
+                <p><strong>Score:</strong> <span id="radiantScore">-</span></p>
+                <p><strong>Kills:</strong> <span id="radiantKills">-</span></p>
+                <p><strong>Towers:</strong> <span id="radiantTowers">-</span></p>
+                <p><strong>Result:</strong> <span id="radiantWin" class="match-result">-</span></p>
+            </div>
+            
+            <div class="detail-card">
+                <h3>Dire Team</h3>
+                <p><strong>Score:</strong> <span id="direScore">-</span></p>
+                <p><strong>Kills:</strong> <span id="direKills">-</span></p>
+                <p><strong>Towers:</strong> <span id="direTowers">-</span></p>
+                <p><strong>Result:</strong> <span id="direWin" class="match-result">-</span></p>
+            </div>
+        </div>
+        
+        <div class="teams-container">
+            <h3 class="teams-title">Players</h3>
+            
+            <div class="team-card">
+                <div class="team-header">
+                    <span class="radiant">Radiant</span>
+                    <span id="radiantResult" class="match-result">-</span>
+                </div>
+                <div id="radiantPlayers"></div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-header">
+                    <span class="dire">Dire</span>
+                    <span id="direResult" class="match-result">-</span>
+                </div>
+                <div id="direPlayers"></div>
+            </div>
+        </div>
+        
+        <button class="toggle-json" id="toggleJson">Show Full API Response</button>
+        <div class="json-viewer" id="jsonViewer"></div>
+    </div>
