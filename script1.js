@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const heroImg = document.createElement('img');
                 heroImg.className = 'hero-image';
-                heroImg.src = player.hero_id ? `https://api.opendota.com${getHeroImage(player.hero_id)}` : 'https://api.opendota.com/apps/dota2/images/heroes/antimage_full.png?';
+                heroImg.src = 'images/hero_icon/${hero.id}.jpg';
                 heroImg.alt = 'Hero';
                 
                 const playerInfo = document.createElement('div');
